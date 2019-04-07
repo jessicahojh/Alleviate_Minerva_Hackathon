@@ -1,6 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
 from sqlalchemy.sql import func
+from flask import Flask
+
 
 
 db = SQLAlchemy()
@@ -35,7 +37,7 @@ class Doctor(db.Model):
 
         return f"<Doctor doctor_id={self.doctor_id} name={self.name} doc_type={self.doc_type}>"
 
-class Patient_doc_relationship(db.model):
+class Patient_doc_relationship(db.Model):
 
     __tablename__ = "patient_doc_relationships"
 
@@ -50,24 +52,25 @@ class Patient_doc_relationship(db.model):
 
         return f"<Patient_doc_relationship relationship_id={self.relationship_id} patient_id={self.patient_id} doctor_id={self.doctor_id}>"
 
-class Referral(db.Model): 
+# class Referral(db.Model): 
 
-    __tablename__ = "referrals"
+#     __tablename__ = "referrals"
 
-    referral_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    doctor_who_referred = db.Column(db.Integer, db.ForeignKey('doctors.doctor_id'))
-    specialty = db.Column(db.String(50), nullable=False)
-    referred_doctor = db.Column(db.Integer, db.ForeignKey('doctors.doctor_id'))
-    patient_id = db.Column(db.Integer, db.ForeignKey('patients.patient_id'))
+#     referral_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+#     doctor_who_referred = db.Column(db.Integer, db.ForeignKey('doctors.doctor_id'))
+#     specialty = db.Column(db.String(50), nullable=False)
+#     referred_doctor = db.Column(db.Integer, db.ForeignKey('doctors.doctor_id'))
+#     patient_id = db.Column(db.Integer, db.ForeignKey('patients.patient_id'))
 
-    patient = db.relationship("Patient", backref="referrals")
-    doctor = db.relationship("Doctor", backref="referrals")
+#     patient = db.relationship("Patient", backref="referrals")
+#     doctor = db.relationship("Doctor", backref="referrals")
+#     doctor_who_referred = db.relationship("Doctor", backref="referrals")
 
-    def __repr__(self):
+#     def __repr__(self):
 
-        return f"<Referral referral_id={self.referral_id} name={self.doctor_who_referred} specialty={self.specialty} referred_doctor={self.referred_doctor}>"
+#         return f"<Referral referral_id={self.referral_id} name={self.doctor_who_referred} specialty={self.specialty} referred_doctor={self.referred_doctor}>"
 
- class Prescription(db.Model):
+class Prescription(db.Model):
 
     __tablename__ = "prescriptions"
 
@@ -129,7 +132,7 @@ class Immunization(db.Model):
 
     immunization_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     date = db.Column(db.TIMESTAMP(timezone=True), server_default=func.now(), onupdate=func.now())
-    immunization_name = db.Column(db.Sting, db.ForeignKey('places.place_id'))
+    name = db.Column(db.String(50))
     patient_id = db.Column(db.Integer, db.ForeignKey('patients.patient_id'))
 
     patient = db.relationship("Patient", backref="immunizations")
@@ -153,5 +156,8 @@ def connect_to_db(app):
 if __name__ == "__main__":
 
     from server import app
+  
     connect_to_db(app)
+    db.create_all()
     print("Connected to DB.")
+    

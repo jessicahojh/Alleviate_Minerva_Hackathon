@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
+
+    <link rel="stylesheet" href="/static/css/homepage.css"/>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+  </head>
+
+
+  <body>
+    <div class="container"> 
+        <center>
+        <h1 class="title"> 
+            <img src="/static/imgs/Logo.png" class="logo">
+         Alleviate Health Records System </h1>
+         </center>
+      <div class="d-flex justify-content-center h-100">
+        <div class="card">
+          <div class="card-header">
+            <center><h4>Log In</h4></center>
+          </div>
+          <div class="card-body">
+            <form class="bc-login" action="/" method="POST">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="fa fa-user-circle"></i
+                  ></span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="email"
+                  name="email"
+                />
+              </div>
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="fas fa-key"></i
+                  ></span>
+                </div>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="password"
+                  name="password"
+                />
+              </div>
+            <button type="submit" class="btn btn-primary" id="submit">
+                Submit
+            </button>
+            
+          </div>
+          <div class="card-footer">
+            <div class="d-flex justify-content-center links">
+     
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

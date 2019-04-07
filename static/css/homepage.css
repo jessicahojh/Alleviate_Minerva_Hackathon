@@ -1,0 +1,24 @@
+body {
+    background: gray;
+}
+
+.title {
+    color: white;
+   font-size:60px;
+   margin-top: 91px;
+   font-family: sans-serif;
+}
+
+.logo {
+    width: 9%;
+}
+
+.card {
+    width: 46%;
+    margin-top: 8%;
+
+}
+
+#submit {
+    width: 100%;
+}
